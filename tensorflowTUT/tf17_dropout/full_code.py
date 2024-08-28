@@ -45,8 +45,7 @@ l1 = add_layer(xs, 64, 50, 'l1', activation_function=tf.nn.tanh)
 prediction = add_layer(l1, 50, 10, 'l2', activation_function=tf.nn.softmax)
 
 # the loss between prediction and real data
-cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction),
-                                              reduction_indices=[1]))  # loss
+cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction), reduction_indices=[1]))  # loss
 tf.summary.scalar('loss', cross_entropy)
 train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
